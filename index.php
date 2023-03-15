@@ -1,14 +1,21 @@
 <?php 
-
+session_start();
 require_once 'autoload.php';
 require_once 'config/db.php';
 require_once 'config/parameters.php'; 
+require_once 'helpers/helper.php';
 
-require_once 'views/layouts/header.php'; 
-require_once 'views/layouts/sidebar.php'; 
-require_once 'views/layouts/topbar.php';
-        
+?>
 
+<?php if( !$_GET['controller']=='usuario' && !$_GET['action']=='login'){
+    require_once 'views/layouts/header.php'; 
+} 
+// require_once 'views/layouts/sidebar.php'; 
+// require_once 'views/layouts/topbar.php';
+
+?>
+
+<?php
 //Funcion para mostrar error
 function showError()
 {
@@ -28,19 +35,19 @@ if (isset($_GET['controller']) && class_exists($_GET['controller'] . 'Controller
         $controlador->$action();
         
     }else {
+        
         showError();
     }
 
 }elseif (!isset($_GET['controller'])) {
 
-   
     $nombre_controlador = CONTROLLER_DEFAULT.'Controller';
     $controlador = new $nombre_controlador();
     $action = ACTION_DEFAULT;
     $controlador->$action();
 
 }else{
-
+   
     showError();
 }
 
