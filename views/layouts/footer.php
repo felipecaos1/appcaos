@@ -58,6 +58,8 @@
     <script src="<?=BASE_URL?>assets/js/demo/chart-area-demo.js"></script>
     <script src="<?=BASE_URL?>assets/js/demo/chart-pie-demo.js"></script>
 
+    <script src="<?=BASE_URL?>assets/js/app.js"></script>
+
 </body>
 
 </html>
