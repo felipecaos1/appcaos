@@ -23,8 +23,7 @@
     
     if(isset($_SESSION['registro']) ){
         var_dump($_SESSION['registro']);
-       
-        
+    
     }
     
     helper::delete_session('registro');
