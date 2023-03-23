@@ -41,9 +41,15 @@
             <li class="nav-item active">
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?=BASE_URL?>usuario/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item active">
+                <!-- Divider -->
+                <a class="nav-link" href="<?=BASE_URL?>usuario/logout">
+                    <i class="fas fa-fw fa-power-off"></i>
+                    <span>Cerrar sesion</span></a>
                
             </li>
 
@@ -76,7 +82,10 @@
                     </form>
 
                     <ul>
-                        <li>hola</li>
+                        <?php if(isset($_SESSION['identity'])):?>
+                            <li>Hola, <?=$_SESSION['identity']->nombre?></li>
+                            
+                        <?php endif;?>
                     </ul>
 
                 </nav>

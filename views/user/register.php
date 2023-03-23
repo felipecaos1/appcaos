@@ -19,7 +19,16 @@
     <link href="<?= BASE_URL ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+<?php 
+    
+    if(isset($_SESSION['registro']) ){
+        var_dump($_SESSION['registro']);
+       
+        
+    }
+    
+    helper::delete_session('registro');
+?>
 <body class="bg-gradient-primary">
 
     <div class="container">
