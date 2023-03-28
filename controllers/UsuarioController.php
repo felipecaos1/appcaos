@@ -5,6 +5,7 @@ class UsuarioController{
 
     public function dashboard(){
         helper::isUserLogued();
+        $lista_categoria = helper::getCategorias();
         
         require_once 'views/layouts/page.php';
     }

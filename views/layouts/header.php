@@ -47,6 +47,13 @@
             </li>
             <li class="nav-item active">
                 <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+                <a class="nav-link" href="<?=BASE_URL?>categorias/gestion">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Categorías</span></a>
+            </li>
+            <li class="nav-item active">
+                <!-- Divider -->
                 <a class="nav-link" href="<?=BASE_URL?>usuario/logout">
                     <i class="fas fa-fw fa-power-off"></i>
                     <span>Cerrar sesion</span></a>

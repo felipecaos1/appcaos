@@ -20,4 +20,27 @@ class helper{
 
     }
 
+    public static function getNoCategorias(){
+        require_once 'models/categoria.php';
+
+        $categoria = new categoria();
+
+        $no_categorias = $categoria->getAll();
+
+        $no_categorias = $no_categorias->num_rows;
+
+        return $no_categorias;
+    }
+
+    public static function getCategorias(){
+        require_once 'models/categoria.php';
+
+        $categoria = new categoria();
+
+        $categorias = $categoria->getAll();
+
+        return $categorias;
+    }
+
+
 }

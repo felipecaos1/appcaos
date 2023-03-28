@@ -5,7 +5,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="#" data-toggle="modal" data-target="#añadirNota" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-plus fa-sm text-white-50"></i> Nueva nota</a>
 </div>
 
@@ -85,7 +85,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Categorías</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=helper::getNoCategorias()?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -406,5 +406,49 @@
     </div>
 </div>
 
+</div>
+
+<!-- Modal para añadir nota -->
+<div class="modal fade" id="añadirNota" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aadir nueva nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="user" action="<?=BASE_URL?>tarea/añadir" method="POST"> 
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="titulo" aria-describedby="emailHelp" placeholder="Título de la nota" name="titulo">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control " name="descripcion" id="" cols="30" rows="5" placeholder="Descripción de la nota"></textarea>
+                    </div>
+                    <div class="form-group">
+                       <select name="categoria" id="" class="form-control " name="categoria" >
+                        <option value="0"selected>Selecciones una categoria</option>
+                        <?php while($cat = $lista_categoria->fetch_object()): ?>
+                        <option value="<?=$cat->id?>"><?=$cat->nombre?></option>
+                        <?php endwhile;?>
+                       </select>
+                    </div>
+                    
+                    <!-- <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                            <label class="custom-control-label" for="customCheck">Remember
+                                Me</label>
+                        </div>
+                    </div> -->
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Añadir">
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <p>Añadir notas</p>
+            </div> -->
+        </div>
+    </div>
 </div>
 <!-- /.container-fluid -->

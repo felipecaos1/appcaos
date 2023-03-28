@@ -7,9 +7,12 @@ require_once 'helpers/helper.php';
 
 ?>
 
-<?php if( $_GET['controller']=='usuario' && $_GET['action']!='login' && $_GET['action']!='register'){
+<?php 
+if(isset($_GET) && $_GET['controller']!='usuario'){
     require_once 'views/layouts/header.php'; 
-} 
+}elseif(isset($_GET) && $_GET['action']!='login' && $_GET['action']!='register'){
+    require_once 'views/layouts/header.php'; 
+}
 // require_once 'views/layouts/sidebar.php'; 
 // require_once 'views/layouts/topbar.php';
 
