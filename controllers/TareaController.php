@@ -3,6 +3,8 @@ require_once 'models/tarea.php';
 class tareaController{
 
     public function añadir(){
+        helper::isUserLogued();
+
         if(isset($_POST)){
 
             $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : false; 
@@ -45,6 +47,50 @@ class tareaController{
 
         
         header('location:'.BASE_URL.'usuario/dashboard');
+    }
+
+    public function eliminar(){
+        helper::isUserLogued();
+
+        if(isset($_GET)){
+
+            $id = isset($_GET['id']) ? $_GET['id']:false;
+
+            if($id){
+
+                $tarea = new tarea();
+                $tarea->setId($id);
+                $result = $tarea->delete();
+
+                if($result){
+                    $_SESSION['nota-eliminacion']='completed';
+                }else{
+                    $_SESSION['nota-eliminacion']='failed';
+                }
+
+
+            }else{
+                // redirigir
+                $_SESSION['nota-eliminacion']='failed';
+            }
+
+
+        }else{
+            // redirigir
+            $_SESSION['nota-eliminacion']='failed';
+        }
+        
+     
+        header('location:'.BASE_URL.'usuario/dashboard');
+
+    }
+
+    public function papelera(){
+        helper::isUserLogued();
+
+        $lista_tareas = helper::getTareas('papelera');
+        
+        require_once 'views/notas/papelera.php';
     }
 
 }

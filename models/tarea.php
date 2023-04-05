@@ -193,17 +193,47 @@ class tarea{
     
     }
 
-    public function getAll(){
+    public function getAll($estado){
 
         try{
-            $sql = "SELECT t.*, c.nombre as cat_nombre FROM tareas t INNER JOIN categorias c WHERE t.usuario_id = {$this->getUsuario_id()} AND c.id = t.categoria_id ORDER BY t.id DESC;";
+            $sql = "SELECT t.*, c.nombre as cat_nombre FROM tareas t INNER JOIN categorias c WHERE t.usuario_id = {$this->getUsuario_id()} AND c.id = t.categoria_id AND t.estado='{$estado}' ORDER BY t.id DESC;";
 
             $tareas = $this->db->query($sql);
             
             return $tareas;
 
         }catch(Exception $e){
+            
             return false;
         }
+    }
+
+    public function delete(){
+
+        $sql="SELECT estado FROM tareas WHERE id = {$this->id}";
+
+        $resul = $this->db->query($sql);
+        $tarea =  $resul->fetch_object();
+
+        $final_resul=false;
+
+        if($tarea->estado === 'publicada'){
+            $sql = "UPDATE tareas SET `estado`='papelera' WHERE id = {$this->id}";
+            $resul = $this->db->query($sql);
+            if($resul){
+                $resul=true;
+            }
+
+        }elseif($tarea->estado === 'papelera'){
+            $sql = "DELETE FROM `tareas` WHERE id = {$this->id}";
+            $resul = $this->db->query($sql);
+            if($resul){
+                $resul=true;
+            }
+        }else{
+            // manejo error
+        }
+
+        return $final_resul;
     }
 }

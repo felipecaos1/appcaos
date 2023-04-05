@@ -7,7 +7,7 @@ class UsuarioController{
     public function dashboard(){
         helper::isUserLogued();
         $lista_categoria = helper::getCategorias();
-        $lista_tareas = helper::getTareas();
+        $lista_tareas = helper::getTareas('publicada');
         
         require_once 'views/layouts/page.php';
     }

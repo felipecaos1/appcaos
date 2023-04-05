@@ -53,6 +53,11 @@
                     <span>Categorías</span></a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="<?php echo BASE_URL?>tarea/papelera">
+                <i class="fas  fa-trash"></i>
+                <span>Papelera</span></a>  
+            </li>
+            <li class="nav-item active">
                 <!-- Divider -->
                 <a class="nav-link" href="<?=BASE_URL?>usuario/logout">
                     <i class="fas fa-fw fa-power-off"></i>
@@ -90,8 +95,7 @@
 
                     <ul>
                         <?php if(isset($_SESSION['identity'])):?>
-                            <li>Hola, <?=$_SESSION['identity']->nombre?></li>
-                            
+                            <li> Hola,<?php echo $_SESSION['identity']->nombre?></li>
                         <?php endif;?>
                     </ul>
 

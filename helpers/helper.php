@@ -42,14 +42,14 @@ class helper{
         return $categorias;
     }
 
-    public static function getNoTareas(){
+    public static function getNoTareas($estado){
 
         require_once 'models/tarea.php';
 
         $tareas = new tarea();
 
         $tareas->setUsuario_id($_SESSION['identity']->id);
-        $lista_tareas = $tareas->getAll();
+        $lista_tareas = $tareas->getAll($estado);
         $no_tareas = 0;
 
         if($lista_tareas){
@@ -59,13 +59,13 @@ class helper{
         return $no_tareas; 
     }
 
-    public static function getTareas(){
+    public static function getTareas($estado){
         require_once 'models/tarea.php';
 
         $tareas = new tarea();
 
         $tareas->setUsuario_id($_SESSION['identity']->id);
-        $lista_tareas = $tareas->getAll();
+        $lista_tareas = $tareas->getAll($estado);
 
         return $lista_tareas;
 
