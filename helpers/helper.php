@@ -42,5 +42,35 @@ class helper{
         return $categorias;
     }
 
+    public static function getNoTareas(){
+
+        require_once 'models/tarea.php';
+
+        $tareas = new tarea();
+
+        $tareas->setUsuario_id($_SESSION['identity']->id);
+        $lista_tareas = $tareas->getAll();
+        $no_tareas = 0;
+
+        if($lista_tareas){
+            $no_tareas = $lista_tareas->num_rows;
+        }
+
+        return $no_tareas; 
+    }
+
+    public static function getTareas(){
+        require_once 'models/tarea.php';
+
+        $tareas = new tarea();
+
+        $tareas->setUsuario_id($_SESSION['identity']->id);
+        $lista_tareas = $tareas->getAll();
+
+        return $lista_tareas;
+
+        
+    }
+
 
 }

@@ -19,11 +19,12 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Notas</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                            Tareas</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=helper::getNoTareas()?></div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="fas  fa-book fa-2x text-gray-300"></i>
+                        
                     </div>
                 </div>
             </div>
@@ -54,11 +55,11 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tareas
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tareas Completadas
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0</div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -96,9 +97,106 @@
     </div>
 </div>
 
-<!-- Content Row -->
+<!-- Content Row tablero de notas-->
 
 <div class="row">
+
+<?php while($tarea = $lista_tareas->fetch_object()):?>
+<!-- Tarjeta de notas -->
+<div class="col-xl-3 col-lg-3 col-md-6">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <?=$tarea->titulo?>
+                    <br>
+                    <span class="text-gray-600"><small>Id: <?=$tarea->id?></small></span>
+                </h6>
+                <br>
+                
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+            <?=$tarea->descripcion?> 
+            </div>
+
+            <div class="card-footer">
+            <?=$tarea->cat_nombre?> 
+            </div>
+          
+        </div>
+    </div>
+<!-- Fin de tarjeta -->
+<?php endwhile;?>
+<!-- Tarjeta de notas -->
+<div class="col-xl-4 col-lg-4 col-md-6">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Pendientes de la app
+                    
+                </h6>
+                <br>
+                
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <ul>
+                    <li>Cambiar nota a borrador</li>
+                    <li>Papelera de notas</li>
+                    <li>Restaurar notas</li>
+                    <li>Eliminar nota definitivamente</li>
+                    <li>Cambair categoria</li>
+                    <li>Tareas por categorìa</li>
+                    <li>Sincategoria cuando se elimine</li>
+                    <li>Numero de tareas por categoria</li>
+                    <li>Editar nota</li>
+                    <li>Editar categoria</li>
+                    <li>Datos personales</li>
+                    <li>Editar datos personales</li>
+                    <li>Modal para confirma logout</li>
+                    <li>Foto de perfil</li>
+                    <li>Pàgina de busqueda</li>
+                    <li>Aplicar un color por cada categoria</li>
+                </ul>
+            </div>
+
+            <div class="card-footer">
+            
+            </div>
+          
+        </div>
+    </div>
+<!-- Fin de tarjeta -->
 
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
@@ -252,6 +350,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <!-- Content Row -->
 <div class="row">

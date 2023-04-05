@@ -186,12 +186,24 @@ class tarea{
             $añadir = $this->db->query($sql);
             $result=true;
         }catch(Exception $e){
-            echo $e->getMessage();
-            die();
             $result = false;
         }
 
         return $result;
     
+    }
+
+    public function getAll(){
+
+        try{
+            $sql = "SELECT t.*, c.nombre as cat_nombre FROM tareas t INNER JOIN categorias c WHERE t.usuario_id = {$this->getUsuario_id()} AND c.id = t.categoria_id ORDER BY t.id DESC;";
+
+            $tareas = $this->db->query($sql);
+            
+            return $tareas;
+
+        }catch(Exception $e){
+            return false;
+        }
     }
 }

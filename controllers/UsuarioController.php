@@ -1,11 +1,13 @@
 <?php
 
 require_once 'models/usuario.php';
+
 class UsuarioController{
 
     public function dashboard(){
         helper::isUserLogued();
         $lista_categoria = helper::getCategorias();
+        $lista_tareas = helper::getTareas();
         
         require_once 'views/layouts/page.php';
     }
